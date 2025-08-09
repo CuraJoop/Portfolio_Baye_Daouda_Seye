@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baye Daouda Seye - Full Stack Developer | Portfolio</title>
+    <meta name="description" content="Portfolio professionnel de Baye Daouda Seye, Full Stack Developer passionné par l'IoT, le développement web et mobile. Découvrez mes projets et compétences.">
+    <meta name="author" content="Baye Daouda Seye">
+    <meta name="keywords" content="Full Stack Developer, Développeur Web, IoT, React, Node.js, MongoDB, Sénégal, Portfolio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Baye Daouda Seye - Full Stack Developer | Portfolio">
+    <meta property="og:description" content="Portfolio professionnel de Baye Daouda Seye, Full Stack Developer spécialisé en développement web, mobile et IoT.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bayedaouda-portfolio.com">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', // Deep blue
+                        secondary: '#2563eb', // Vibrant blue
+                        accent: '#60a5fa', // Light blue
+                        light: '#f0f5ff', // Soft white-blue
+                        dark: '#0f172a', // Slate dark
+                        highlight: '#fef3c7', // Warm highlight
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.5' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .slide-up { animation: slideUp 0.8s ease-out forwards; }
+        .progress-bar { transition: width 1.5s ease-in-out; }
+        .bg-pattern { 
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60L60 0M30 60L60 30' stroke='%232563eb' stroke-width='1' stroke-opacity='0.2' fill='none'/%3E%3C/svg%3E");
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-scale:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f5ff; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1e3a8a; }
+        .card-shadow { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        .card-shadow:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-serif text-2xl font-bold text-primary">Baye Daouda</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Accueil</a>
+                    <a href="#education" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Formation</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Expérience</a>
+                    <a href="#skills" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Compétences</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Projets</a>
+                    <a href="#personality" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Personnalité</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-sm">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#home" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Accueil</a>
+                <a href="#education" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Formation</a>
+                <a href="#experience" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Expérience</a>
+                <a href="#skills" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Compétences</a>
+                <a href="#projects" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Projets</a>
+                <a href="#personality" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Personnalité</a>
+                <a href="#contact" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-pattern pt-20">
+        <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="flex flex-col justify-center text-center lg:text-left slide-up">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-dark mb-4 tracking-tight">
+                        Baye Daouda <span class="text-primary">Seye</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl lg:text-3xl text-gray-700 font-semibold mb-6">
+                        Full Stack Developer
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                        Passionné par l'apprentissage continu, j'excelle à résoudre des problèmes complexes avec une approche méthodique et créative.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://linkedin.com/in/bayedaouda" target="_blank" 
+                           class="bg-primary text-white px-6 py-3 rounded-xl hover:bg-secondary transition-all duration-300 inline-flex items-center justify-center shadow-md hover-scale">
+                            <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                        </a>
+                        <a href="mailto:baye@example.com" 
+                           class="border-2 border-primary text-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-300 inline-flex items-center justify-center shadow-md hover-scale">
+                            <i class="fas fa-envelope mr-2"></i> Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end slide-up">
+                    <div class="relative group">
+                        <img src="images/image.jpg" alt="Baye Daouda Seye" 
+                             class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white transition-all duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 rounded-full bg-primary opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Formation</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mon parcours académique et mes formations continues pour exceller dans le développement.</p>
+            </div>
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary transform md:-translate-x-0.5"></div>
+                <div class="space-y-12">
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">06/2024 – Aujourd'hui</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Full Stack Developer</h3>
+                                <p class="text-secondary font-medium">EDACY Talent4Startup, Digital Africa</p>
+                                <p class="text-gray-600 mt-2">Option – MEAN Stack</p>
+                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">En cours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">01/2025</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Licence Génie Informatique L3</h3>
+                                <p class="text-secondary font-medium">Univers Professionnel (UNI-PRO)</p>
+                                <p class="text-gray-600 mt-2">Option – Développement web/Mobile</p>
+                                <span class="inline-block mt-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Prévu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">08/2024</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Brevet de Technicien Supérieur</h3>
+                                <p class="text-secondary font-medium">CFPT Sénégal Japon</p>
+                                <p class="text-gray-600 mt-2">Option – Informatique Industrielle et Réseaux</p>
+                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Obtenu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">2023 – 2025</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Licence IDA L2</h3>
+                                <p class="text-secondary font-medium">Université Numérique Cheikh Hamidou Kane</p>
+                                <p class="text-gray-600 mt-2">Option – Informatique et développement des applications</p>
+                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">En cours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">2022</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Baccalauréat Technique (série T2)</h3>
+                                <p class="text-secondary font-medium">Lycée Seydina Limamou Laye, Guédiawaye</p>
+                                <p class="text-gray-600 mt-2">Option – Electrotechnique, Electronique</p>
+                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Obtenu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Expérience Professionnelle</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mon parcours professionnel dans le développement et la technologie.</p>
+            </div>
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary transform md:-translate-x-0.5"></div>
+                <div class="space-y-12">
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-briefcase text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">09/2024 – Aujourd'hui</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Chief Information Officer</h3>
+                                <p class="text-secondary font-medium">Art'Beau-Rescence SAS</p>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Veille technologique</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Gestion de projet</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-microchip text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">08/2024 – 11/2024</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Développeur IoT</h3>
+                                <p class="text-secondary font-medium">Baraka Global Art</p>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Confection de costumes intelligents pour spectacles</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Conception et programmation de cartes électroniques</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-laptop text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">2023 – 2024</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Freelance</h3>
+                                <p class="text-secondary font-medium">Web & Graphic Design</p>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Conception d'expérience utilisateur (UX) optimale</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Traduction visuelle de l'identité de marque</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-chalkboard-teacher text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">09/2022 – 12/2024</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Instituteur à domicile</h3>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Programme personnalisé de Bureautique et programmation</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Adaptation des méthodes d'enseignement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-start fade-in">
+                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                            <i class="fas fa-tools text-white text-lg"></i>
+                        </div>
+                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                                <span class="text-primary text-sm font-semibold">01/2018 – 09/2024</span>
+                                <h3 class="text-xl font-semibold text-dark mt-2">Technicien de maintenance informatique</h3>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Maintenance des serveurs, réseaux, postes clients</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Résolution des dysfonctionnements matériels et logiciels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Compétences</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mes compétences techniques et interpersonnelles forgées par l'expérience.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Compétences Techniques</h3>
+                    <div class="space-y-6">
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-code text-primary mr-3"></i> Développement Web</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-primary h-3 rounded-full" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-palette text-primary mr-3"></i> UI/UX Design</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-primary h-3 rounded-full" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-microchip text-primary mr-3"></i> Internet of Things</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-primary h-3 rounded-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-eye text-primary mr-3"></i> Computer Vision</span>
+                                <span class="text-sm text-gray-500">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-primary h-3 rounded-full" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-mobile-alt text-primary mr-3"></i> Développement Mobile</span>
+                                <span class="text-sm text-gray-500">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-primary h-3 rounded-full" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Compétences Interpersonnelles</h3>
+                    <div class="space-y-6">
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-lightbulb text-accent mr-3"></i> Curiosité</span>
+                                <span class="text-sm text-gray-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-accent h-3 rounded-full" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-heart text-accent mr-3"></i> Empathie</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-accent h-3 rounded-full" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-clock text-accent mr-3"></i> Gestion du temps</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-accent h-3 rounded-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-brain text-accent mr-3"></i> Esprit critique</span>
+                                <span class="text-sm text-gray-500">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-accent h-3 rounded-full" data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-white p-4 rounded-xl card-shadow hover-scale">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="flex items-center text-gray-700 font-medium"><i class="fas fa-thumbs-up text-accent mr-3"></i> Confiance</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar bg-accent h-3 rounded-full" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 fade-in">
+                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Langues & Outils</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Français</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Anglais</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Git / GitHub</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">OpenProject</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">n8n</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Excel</span>
+                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Metabase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Projets</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Quelques projets marquants qui illustrent mes compétences et ma créativité.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <i class="fas fa-microchip text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold">IoT</span>
+                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">Costumes Intelligents</h3>
+                        <p class="text-gray-600 mb-4">Développement de costumes connectés pour spectacles avec capteurs et LEDs programmables.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Arduino</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">IoT</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">C++</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
+                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold">Web</span>
+                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">Portfolio Responsive</h3>
+                        <p class="text-gray-600 mb-4">Site portfolio moderne avec design responsive et animations fluides.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">HTML</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Tailwind</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
+                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary text-sm font-semibold">Mobile</span>
+                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">App de Gestion</h3>
+                        <p class="text-gray-600 mb-4">Application mobile de gestion de projets avec interface intuitive.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">React Native</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Node.js</span>
+                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
+                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12 fade-in">
+                <a href="https://github.com" target="_blank" class="bg-primary text-white px-8 py-3 rounded-xl hover:bg-secondary transition-all duration-300 inline-flex items-center hover-scale">
+                    <i class="fab fa-github mr-2"></i> Voir plus sur GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Section -->
+    <section id="personality" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Personnalité & Centres d'intérêt</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez ce qui me définit et mes passions quotidiennes.</p>
+            </div>
+            <div class="text-center mb-16 fade-in">
+                <div class="bg-white rounded-xl card-shadow p-8 max-w-md mx-auto hover-scale">
+                    <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-2">INTJ-A / INTJ-T</h3>
+                    <p class="text-lg text-primary font-semibold mb-2">L'ARCHITECTE</p>
+                    <p class="text-gray-600">Selon le test MBTI (Myers Briggs Type Indicator)</p>
+                </div>
+            </div>
+            <div class="mb-16 fade-in">
+                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Traits de Personnalité</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-dark mb-2">Rationnel</h4>
+                        <p class="text-gray-600 text-sm">Approche analytique et logique</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-thumbs-up text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-dark mb-2">Confiant</h4>
+                        <p class="text-gray-600 text-sm">Assurance dans mes décisions</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-palette text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-dark mb-2">Créatif</h4>
+                        <p class="text-gray-600 text-sm">Solutions innovantes</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-secret text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-dark mb-2">Discret</h4>
+                        <p class="text-gray-600 text-sm">Réflexion silencieuse</p>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in">
+                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Centres d'Intérêt</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-book text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-dark mb-3">Lecture</h4>
+                        <p class="text-gray-600">Développement personnel, science-fiction, technologie</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
+                        <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chess text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-dark mb-3">Jeu d'échecs</h4>
+                        <p class="text-gray-600">Stratégie et réflexion analytique</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
+                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-dark mb-3">Création</h4>
+                        <p class="text-gray-600">Exploration de nouvelles technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Contact</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Prêt à collaborer ? Contactez-moi pour discuter de vos projets.</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-dark mb-8">Informations de Contact</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Email</h4>
+                                <a href="mailto:baye@example.com" class="text-primary hover:underline">baye@example.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Téléphone</h4>
+                                <a href="tel:+221772330019" class="text-primary hover:underline">(+221) 77 233 00 19</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fab fa-linkedin text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/bayedaouda" target="_blank" class="text-primary hover:underline">Mon LinkedIn</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Localisation</h4>
+                                <p class="text-gray-600">Dakar, Sénégal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-dark mb-8">Envoyez-moi un message</h3>
+                    <div class="space-y-6 bg-white p-6 rounded-xl card-shadow">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none shadow-sm"></textarea>
+                        </div>
+                        <button id="contact-submit" class="w-full bg-primary text-white py-3 rounded-xl hover:bg-secondary transition-all duration-300 font-medium shadow-md hover-scale">
+                            <span class="submit-text">Envoyer le message</span>
+                            <span class="loading-text hidden"><i class="fas fa-spinner fa-spin mr-2"></i> Envoi en cours...</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-serif font-semibold mb-4">Baye Daouda Seye</h3>
+                <p class="text-gray-300 mb-6">Full Stack Developer passionné par l'innovation</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://linkedin.com/in/bayedaouda" target="_blank" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="mailto:baye@example.com" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-600 pt-8">
+                    <p class="text-gray-400">&copy; 2025 Baye Daouda Seye. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-semibold');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-primary', 'font-semibold');
+                }
+            });
+        });
+
+        // Animations on scroll
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
+
+        // Progress bars animation
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => bar.style.width = width, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('#skills').forEach(section => progressObserver.observe(section));
+
+        // Contact form handling
+        document.getElementById('contact-submit').addEventListener('click', function(e) {
+            e.preventDefault();
+            const submitText = this.querySelector('.submit-text');
+            const loadingText = this.querySelector('.loading-text');
+            submitText.classList.add('hidden');
+            loadingText.classList.remove('hidden');
+            this.disabled = true;
+            setTimeout(() => {
+                alert('Message envoyé avec succès ! Je vous répondrai bientôt.');
+                document.querySelector('#contact .space-y-6').reset();
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+                this.disabled = false;
+            }, 2000);
+        });
+    </script>
+    </body>
+</html>
