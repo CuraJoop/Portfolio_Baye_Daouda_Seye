@@ -84,26 +84,45 @@
         .card-shadow { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .card-shadow:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
         
-        /* Améliorations design : plus de fluidité */
         .nav-link { transition: color 0.4s ease, transform 0.3s ease; }
         .nav-link:hover { transform: scale(1.05); }
         
-        /* Pour onglets projets */
-        .tab-btn { padding: 0.75rem 1.5rem; border-radius: 9999px; background-color: white; border: 2px solid #1e3a8a; color: #1e3a8a; font-weight: 500; transition: all 0.3s ease; }
-        .tab-btn:hover { background-color: #1e3a8a; color: white; }
-        .tab-btn.active { background-color: #1e3a8a; color: white; }
-        .tab-content { display: none; opacity: 0; transition: opacity 0.5s ease; }
-        .tab-content.active { display: grid; opacity: 1; }
-        .animate-on-scroll {
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            background-color: white;
+            border: 2px solid #1e3a8a;
+            color: #1e3a8a;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .tab-btn:hover {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        .tab-btn.active {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        .tab-content {
+            display: none;
             opacity: 0;
-            transform: translateY(20px);
+            transition: opacity 0.3s ease;
+            margin-top: 1rem;
         }
-        .animate-on-scroll.visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            animation: slideUp 0.8s ease-out forwards;
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+            margin-top: 1rem;
         }
-        /* Improved project card styles */
+        .tab-content:not(.active) {
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+        }
         .project-card {
             background-color: white;
             border-radius: 1rem;
@@ -136,8 +155,16 @@
             font-size: 1.5rem;
             margin-right: 0.5rem;
         }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            animation: slideUp 0.8s ease-out forwards;
+        }
     </style>
-
 </head>
 <body class="bg-white text-gray-900 antialiased">
     <!-- Navigation -->
@@ -222,7 +249,6 @@
             <div class="relative">
                 <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary transform -translate-x-0.5"></div>
                 <div class="space-y-12">
-                    <!-- Timeline Item 1 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -239,7 +265,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Timeline Item 2 - Right -->
                     <div class="relative flex items-start fade-in flex-row-reverse">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -256,7 +281,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Timeline Item 3 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -273,7 +297,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Timeline Item 4 - Right -->
                     <div class="relative flex items-start fade-in flex-row-reverse">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -290,7 +313,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Timeline Item 5 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -322,7 +344,6 @@
             <div class="relative">
                 <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary transform -translate-x-0.5"></div>
                 <div class="space-y-12">
-                    <!-- Experience Item 1 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-briefcase text-white text-lg"></i>
@@ -339,7 +360,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Experience Item 2 - Right -->
                     <div class="relative flex items-start fade-in flex-row-reverse">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-microchip text-white text-lg"></i>
@@ -356,7 +376,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Experience Item 3 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-laptop text-white text-lg"></i>
@@ -373,7 +392,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Experience Item 4 - Right -->
                     <div class="relative flex items-start fade-in flex-row-reverse">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-chalkboard-teacher text-white text-lg"></i>
@@ -389,7 +407,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Experience Item 5 - Left -->
                     <div class="relative flex items-start fade-in">
                         <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-tools text-white text-lg"></i>
@@ -519,88 +536,113 @@
                     </div>
                 </div>
             </div>
+           
         </div>
     </section>
 
     <!-- Languages and Tools Section -->
-   <section id="tools" class="py-24 bg-pattern">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 slide-up">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Outils & Technologies</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">Mes outils et technologies informatiques maîtrisés.</p>
+    <section id="tools" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Outils & Technologies</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mes outils et technologies informatiques maîtrisés.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-code text-orange-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">HTML</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-code text-blue-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">CSS</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-js-square text-yellow-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">JavaScript</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">React</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-wind text-teal-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Tailwind CSS</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-bootstrap text-purple-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Bootstrap</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-server text-red-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Nest.js</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Next.js</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-js-square text-yellow-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">TypeScript</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-laravel text-red-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Laravel</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-python text-blue-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Python</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-php text-blue-700 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">PHP</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-java text-red-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Java</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-golang text-cyan-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Go</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-vuejs text-green-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Vue.js</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-angular text-red-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Angular</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-database text-blue-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">MySQL</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-database text-green-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">MongoDB</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fab fa-github text-black text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Git / GitHub</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-project-diagram text-blue-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">OpenProject</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-cogs text-orange-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">n8n</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-table text-green-600 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Excel</span>
+                </div>
+                <div class="flex flex-col items-center fade-in">
+                    <i class="fas fa-chart-bar text-purple-500 text-4xl mb-2"></i>
+                    <span class="text-gray-700 font-medium">Metabase</span>
+                </div>
+            </div>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-code text-orange-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">HTML</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-code text-blue-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">CSS</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">React</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-wind text-teal-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Tailwind CSS</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-bootstrap text-purple-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Bootstrap</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-server text-red-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Nest.js</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Next.js</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-js-square text-yellow-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">TypeScript</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-laravel text-red-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Laravel</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-windows text-blue-700 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Systèmes d’exploitation</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-code text-gray-700 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Programmation</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-tools text-gray-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Outils informatiques</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fab fa-github text-black text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Git / GitHub</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-project-diagram text-blue-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">OpenProject</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-cogs text-orange-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">n8n</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-table text-green-600 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Excel</span>
-            </div>
-            <div class="flex flex-col items-center fade-in">
-                <i class="fas fa-chart-bar text-purple-500 text-4xl mb-2"></i>
-                <span class="text-gray-700 font-medium">Metabase</span>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
    <section id="projects" class="py-24 bg-pattern">
@@ -609,165 +651,226 @@
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Mes Projets</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations dans les domaines de l'IoT, du développement web et de la conception d'applications.</p>
             </div>
-            <div class="flex flex-wrap justify-center gap-2 mb-8">
+            <div class="flex flex-wrap justify-center gap-2 mb-6">
                 <button class="tab-btn active" data-tab="all-projects">Tout</button>
                 <button class="tab-btn" data-tab="iot-projects">IoT</button>
                 <button class="tab-btn" data-tab="web-projects">Web</button>
                 <button class="tab-btn" data-tab="conception-projects">Conception</button>
             </div>
-            <div id="all-projects" class="tab-content active space-y-6 fade-in">
+            <div id="all-projects" class="tab-content active grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- IoT Projects -->
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Maison Smart</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/smart-home.jpg" alt="Maison Smart" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Maison Smart</h3>
+                        </div>
+                        <p class="project-description">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
                     </div>
-                    <p class="text-gray-600">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
                 </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Voiture Détecteur d’Obstacle</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/obstacle-car.jpg" alt="Voiture Détecteur d’Obstacle" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Voiture Détecteur d’Obstacle</h3>
+                        </div>
+                        <p class="project-description">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
                     </div>
-                    <p class="text-gray-600">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
                 </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Poubelle Intelligente</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/smart-bin.jpg" alt="Poubelle Intelligente" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Poubelle Intelligente</h3>
+                        </div>
+                        <p class="project-description">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
                     </div>
-                    <p class="text-gray-600">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
                 </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Costume Intelligente</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/smart-costume.jpg" alt="Costume Intelligente" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Costume Intelligente</h3>
+                        </div>
+                        <p class="project-description">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
                     </div>
-                    <p class="text-gray-600">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
                 </div>
                 <!-- Web Projects -->
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Gestion de Bibliothèque</h3>
+                <div class="project project-web project-card">
+                    <img src="images/library-management.jpg" alt="Gestion de Bibliothèque" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Gestion de Bibliothèque</h3>
+                        </div>
+                        <p class="project-description">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
                     </div>
-                    <p class="text-gray-600">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">SaaS AMINA</h3>
+                <div class="project project-web project-card">
+                    <img src="images/saas-amina.jpg" alt="SaaS AMINA" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">SaaS AMINA</h3>
+                        </div>
+                        <p class="project-description">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
                     </div>
-                    <p class="text-gray-600">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Boutique en Ligne Quincaillerie</h3>
+                <div class="project project-web project-card">
+                    <img src="images/ecommerce-hardware.jpg" alt="Boutique en Ligne Quincaillerie" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Boutique en Ligne Quincaillerie</h3>
+                        </div>
+                        <p class="project-description">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
                     </div>
-                    <p class="text-gray-600">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Chatbot</h3>
+                <div class="project project-web project-card">
+                    <img src="images/chatbot.jpg" alt="Chatbot" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Chatbot</h3>
+                        </div>
+                        <p class="project-description">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
                     </div>
-                    <p class="text-gray-600">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
                 </div>
                 <!-- Conception Projects -->
-                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Parking App</h3>
+                <div class="project project-conception project-card">
+                    <img src="images/parking-app.jpg" alt="Parking App" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-drafting-compass project-icon text-accent"></i>
+                            <h3 class="project-title text-dark">Parking App</h3>
+                        </div>
+                        <p class="project-description">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
                     </div>
-                    <p class="text-gray-600">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
                 </div>
-                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Vente Plante App</h3>
+                <div class="project project-conception project-card">
+                    <img src="images/plant-sale-app.jpg" alt="Vente Plante App" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-drafting-compass project-icon text-accent"></i>
+                            <h3 class="project-title text-dark">Vente Plante App</h3>
+                        </div>
+                        <p class="project-description">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
                     </div>
-                    <p class="text-gray-600">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
-                </div>
-            </div>
-            <div id="iot-projects" class="tab-content space-y-6 fade-in">
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Maison Smart</h3>
-                    </div>
-                    <p class="text-gray-600">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
-                </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Voiture Détecteur d’Obstacle</h3>
-                    </div>
-                    <p class="text-gray-600">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
-                </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Poubelle Intelligente</h3>
-                    </div>
-                    <p class="text-gray-600">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
-                </div>
-                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Costume Intelligente</h3>
-                    </div>
-                    <p class="text-gray-600">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
                 </div>
             </div>
-            <div id="web-projects" class="tab-content space-y-6 fade-in">
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Gestion de Bibliothèque</h3>
+            <div id="iot-projects" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project project-iot project-card">
+                    <img src="images/smart-home.jpg" alt="Maison Smart" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Maison Smart</h3>
+                        </div>
+                        <p class="project-description">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
                     </div>
-                    <p class="text-gray-600">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">SaaS AMINA</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/obstacle-car.jpg" alt="Voiture Détecteur d’Obstacle" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Voiture Détecteur d’Obstacle</h3>
+                        </div>
+                        <p class="project-description">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
                     </div>
-                    <p class="text-gray-600">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Boutique en Ligne Quincaillerie</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/smart-bin.jpg" alt="Poubelle Intelligente" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Poubelle Intelligente</h3>
+                        </div>
+                        <p class="project-description">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
                     </div>
-                    <p class="text-gray-600">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
                 </div>
-                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Chatbot</h3>
+                <div class="project project-iot project-card">
+                    <img src="images/smart-costume.jpg" alt="Costume Intelligente" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microchip project-icon text-primary"></i>
+                            <h3 class="project-title text-dark">Costume Intelligente</h3>
+                        </div>
+                        <p class="project-description">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
                     </div>
-                    <p class="text-gray-600">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
                 </div>
             </div>
-            <div id="conception-projects" class="tab-content space-y-6 fade-in">
-                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Parking App</h3>
+            <div id="web-projects" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project project-web project-card">
+                    <img src="images/library-management.jpg" alt="Gestion de Bibliothèque" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Gestion de Bibliothèque</h3>
+                        </div>
+                        <p class="project-description">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
                     </div>
-                    <p class="text-gray-600">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
                 </div>
-                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
-                    <div class="flex items-center mb-2">
-                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
-                        <h3 class="text-lg font-semibold text-dark">Vente Plante App</h3>
+                <div class="project project-web project-card">
+                    <img src="images/saas-amina.jpg" alt="SaaS AMINA" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">SaaS AMINA</h3>
+                        </div>
+                        <p class="project-description">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
                     </div>
-                    <p class="text-gray-600">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
+                </div>
+                <div class="project project-web project-card">
+                    <img src="images/ecommerce-hardware.jpg" alt="Boutique en Ligne Quincaillerie" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Boutique en Ligne Quincaillerie</h3>
+                        </div>
+                        <p class="project-description">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
+                    </div>
+                </div>
+                <div class="project project-web project-card">
+                    <img src="images/chatbot.jpg" alt="Chatbot" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-globe project-icon text-secondary"></i>
+                            <h3 class="project-title text-dark">Chatbot</h3>
+                        </div>
+                        <p class="project-description">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="conception-projects" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project project-conception project-card">
+                    <img src="images/parking-app.jpg" alt="Parking App" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-drafting-compass project-icon text-accent"></i>
+                            <h3 class="project-title text-dark">Parking App</h3>
+                        </div>
+                        <p class="project-description">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
+                    </div>
+                </div>
+                <div class="project project-conception project-card">
+                    <img src="images/plant-sale-app.jpg" alt="Vente Plante App" class="project-image">
+                    <div class="project-content">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-drafting-compass project-icon text-accent"></i>
+                            <h3 class="project-title text-dark">Vente Plante App</h3>
+                        </div>
+                        <p class="project-description">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Personality Section -->
     <section id="personality" class="py-24 bg-pattern">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -804,7 +907,7 @@
                                 <p class="text-gray-600">Assurance dans la prise de décision et l'exécution.</p>
                             </div>
                         </div>
-                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                        <div class="flex flex-col items-center p-4 bg-white rounded-xl card-shadow hover-scale">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
                                 <i class="fas fa-paint-brush text-white"></i>
                             </div>
@@ -873,104 +976,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 slide-up">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Contact</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Prêt à collaborer ? Contactez-moi pour discuter de vos projets.</p>
-            </div>
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-dark mb-8">Informations de Contact</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-dark">Email</h4>
-                                <a href="mailto:baye@example.com" class="text-primary hover:underline">baye@example.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-dark">Téléphone</h4>
-                                <a href="tel:+221772330019" class="text-primary hover:underline">(+221) 772330019</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fab fa-linkedin text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-dark">LinkedIn</h4>
-                                <a href="https://linkedin.com/in/bayedaouda" target="_blank" class="text-primary hover:underline">Mon LinkedIn</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-dark">Localisation</h4>
-                                <p class="text-gray-600">Dakar, Sénégal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-dark mb-8">Envoyez-moi un message</h3>
-                    <div class="space-y-6 bg-white p-6 rounded-xl card-shadow">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none shadow-sm"></textarea>
-                        </div>
-                        <button id="contact-submit" class="w-full bg-primary text-white py-3 rounded-xl hover:bg-secondary transition-all duration-300 font-medium shadow-md hover-scale">
-                            <span class="submit-text">Envoyer le message</span>
-                            <span class="loading-text hidden"><i class="fas fa-spinner fa-spin mr-2"></i> Envoi en cours...</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h3 class="text-2xl font-serif font-semibold mb-4">Baye Daouda Seye</h3>
-                <p class="text-gray-300 mb-6">Full Stack Developer passionné par l'innovation</p>
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://linkedin.com/in/bayedaouda" target="_blank" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                    </a>
-                    <a href="https://github.com" target="_blank" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="mailto:baye@example.com" class="text-gray-300 hover:text-white transition-all duration-300 hover-scale">
-                        <i class="fas fa-envelope text-2xl"></i>
-                    </a>
-                </div>
-                <div class="border-t border-gray-600 pt-8">
-                    <p class="text-gray-400">&copy; 2025 Baye Daouda Seye. Tous droits réservés.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1037,7 +1042,7 @@
                 }
             });
         }, { threshold: 0.5 });
-        document.querySelectorAll('#skills, #languages-tools').forEach(section => progressObserver.observe(section));
+        document.querySelectorAll('#skills, #tools').forEach(section => progressObserver.observe(section));
 
         // Contact form handling
         document.getElementById('contact-submit').addEventListener('click', function(e) {
@@ -1055,19 +1060,42 @@
                 this.disabled = false;
             }, 2000);
         });
-// Tabs for projects
+
+        // Tabs for projects
+       // Tabs for projects
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
                 tabBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                tabContents.forEach(c => c.classList.remove('active'));
-                document.getElementById(btn.dataset.tab).classList.add('active');
+                tabContents.forEach(c => {
+                    c.classList.remove('active');
+                    c.style.height = '0';
+                    c.style.overflow = 'hidden';
+                    c.style.margin = '0';
+                    c.style.padding = '0';
+                    c.style.visibility = 'hidden';
+                });
+                // Activate the selected tab
+                const activeTab = document.getElementById(btn.dataset.tab);
+                activeTab.classList.add('active');
+                activeTab.style.height = 'auto';
+                activeTab.style.overflow = 'visible';
+                activeTab.style.marginTop = '1rem';
+                activeTab.style.padding = '0';
+                activeTab.style.visibility = 'visible';
+                // Force layout recalculation
+                activeTab.offsetHeight; // Trigger reflow
             });
         });
-        // Tabs for projects
-       
+
+        // Ensure initial tab is correctly styled
+        document.getElementById('all-projects').style.marginTop = '1rem';
+        document.getElementById('all-projects').style.height = 'auto';
+        document.getElementById('all-projects').style.overflow = 'visible';
+        document.getElementById('all-projects').style.visibility = 'visible';
     </script>
 </body>
 </html>
