@@ -27,6 +27,11 @@
                         light: '#f0f5ff', // Soft white-blue
                         dark: '#0f172a', // Slate dark
                         highlight: '#fef3c7', // Warm highlight
+                        github: '#181717', // GitHub black
+                        openproject: '#087f8c', // OpenProject teal
+                        n8n: '#ff6d0a', // n8n orange
+                        excel: '#217346', // Excel green
+                        metabase: '#509ee3', // Metabase blue
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -78,7 +83,61 @@
         ::-webkit-scrollbar-thumb:hover { background: #1e3a8a; }
         .card-shadow { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .card-shadow:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+        
+        /* Améliorations design : plus de fluidité */
+        .nav-link { transition: color 0.4s ease, transform 0.3s ease; }
+        .nav-link:hover { transform: scale(1.05); }
+        
+        /* Pour onglets projets */
+        .tab-btn { padding: 0.75rem 1.5rem; border-radius: 9999px; background-color: white; border: 2px solid #1e3a8a; color: #1e3a8a; font-weight: 500; transition: all 0.3s ease; }
+        .tab-btn:hover { background-color: #1e3a8a; color: white; }
+        .tab-btn.active { background-color: #1e3a8a; color: white; }
+        .tab-content { display: none; opacity: 0; transition: opacity 0.5s ease; }
+        .tab-content.active { display: grid; opacity: 1; }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        /* Improved project card styles */
+        .project-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-content {
+            padding: 1.5rem;
+        }
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .project-description {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+        .project-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
     </style>
+
 </head>
 <body class="bg-white text-gray-900 antialiased">
     <!-- Navigation -->
@@ -93,6 +152,7 @@
                     <a href="#skills" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Compétences</a>
                     <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Projets</a>
                     <a href="#personality" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Personnalité</a>
+                    <a href="#interests" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Centres d'Intérêt</a>
                     <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium transition-colors duration-300">Contact</a>
                 </div>
                 <div class="md:hidden">
@@ -110,6 +170,7 @@
                 <a href="#skills" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Compétences</a>
                 <a href="#projects" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Projets</a>
                 <a href="#personality" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Personnalité</a>
+                <a href="#interests" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Centres d'Intérêt</a>
                 <a href="#contact" class="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-light rounded-lg">Contact</a>
             </div>
         </div>
@@ -159,75 +220,90 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Mon parcours académique et mes formations continues pour exceller dans le développement.</p>
             </div>
             <div class="relative">
-                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary transform md:-translate-x-0.5"></div>
+                <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary transform -translate-x-0.5"></div>
                 <div class="space-y-12">
+                    <!-- Timeline Item 1 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
-                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">06/2024 – Aujourd'hui</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Full Stack Developer</h3>
                                 <p class="text-secondary font-medium">EDACY Talent4Startup, Digital Africa</p>
-                                <p class="text-gray-600 mt-2">Option – MEAN Stack</p>
-                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">En cours</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Option – MEAN Stack</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> MongoDB, Express, Angular, Node.js</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                    <!-- Timeline Item 2 - Right -->
+                    <div class="relative flex items-start fade-in flex-row-reverse">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
-                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">01/2025</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Licence Génie Informatique L3</h3>
                                 <p class="text-secondary font-medium">Univers Professionnel (UNI-PRO)</p>
-                                <p class="text-gray-600 mt-2">Option – Développement web/Mobile</p>
-                                <span class="inline-block mt-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Prévu</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Option – Développement web/Mobile</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> React, Flutter</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <!-- Timeline Item 3 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
-                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">08/2024</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Brevet de Technicien Supérieur</h3>
                                 <p class="text-secondary font-medium">CFPT Sénégal Japon</p>
-                                <p class="text-gray-600 mt-2">Option – Informatique Industrielle et Réseaux</p>
-                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Obtenu</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Option – Informatique Industrielle et Réseaux</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Networking, Embedded Systems</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                    <!-- Timeline Item 4 - Right -->
+                    <div class="relative flex items-start fade-in flex-row-reverse">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
-                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">2023 – 2025</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Licence IDA L2</h3>
                                 <p class="text-secondary font-medium">Université Numérique Cheikh Hamidou Kane</p>
-                                <p class="text-gray-600 mt-2">Option – Informatique et développement des applications</p>
-                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">En cours</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Option – Informatique et développement des applications</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> JavaScript, Python</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <!-- Timeline Item 5 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
-                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-l-4 border-primary">
+                        <div class="w-1/2 pr-8">
+                            <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">2022</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Baccalauréat Technique (série T2)</h3>
                                 <p class="text-secondary font-medium">Lycée Seydina Limamou Laye, Guédiawaye</p>
-                                <p class="text-gray-600 mt-2">Option – Electrotechnique, Electronique</p>
-                                <span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Obtenu</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Option – Electrotechnique, Electronique</li>
+                                    <li class="flex items-start"><i class="fas fa-chevron-right text-primary mt-1 mr-2 text-xs"></i> Electronics, Circuit Design</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -244,13 +320,14 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Mon parcours professionnel dans le développement et la technologie.</p>
             </div>
             <div class="relative">
-                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-primary transform md:-translate-x-0.5"></div>
+                <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary transform -translate-x-0.5"></div>
                 <div class="space-y-12">
+                    <!-- Experience Item 1 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-briefcase text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                        <div class="w-1/2 pr-8">
                             <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">09/2024 – Aujourd'hui</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Chief Information Officer</h3>
@@ -262,11 +339,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                    <!-- Experience Item 2 - Right -->
+                    <div class="relative flex items-start fade-in flex-row-reverse">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-microchip text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                        <div class="w-1/2 pl-8">
                             <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">08/2024 – 11/2024</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Développeur IoT</h3>
@@ -278,11 +356,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Experience Item 3 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-laptop text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                        <div class="w-1/2 pr-8">
                             <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">2023 – 2024</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Freelance</h3>
@@ -294,11 +373,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                    <!-- Experience Item 4 - Right -->
+                    <div class="relative flex items-start fade-in flex-row-reverse">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-chalkboard-teacher text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pl-8 md:ml-auto">
+                        <div class="w-1/2 pl-8">
                             <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">09/2022 – 12/2024</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Instituteur à domicile</h3>
@@ -309,11 +389,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Experience Item 5 - Left -->
                     <div class="relative flex items-start fade-in">
-                        <div class="absolute left-0 md:left-1/2 w-10 h-10 bg-primary rounded-full transform md:-translate-x-5 flex items-center justify-center">
+                        <div class="absolute left-1/2 w-10 h-10 bg-primary rounded-full transform -translate-x-5 flex items-center justify-center">
                             <i class="fas fa-tools text-white text-lg"></i>
                         </div>
-                        <div class="ml-14 md:ml-0 md:w-1/2 md:pr-8">
+                        <div class="w-1/2 pr-8">
                             <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
                                 <span class="text-primary text-sm font-semibold">01/2018 – 09/2024</span>
                                 <h3 class="text-xl font-semibold text-dark mt-2">Technicien de maintenance informatique</h3>
@@ -438,168 +519,354 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-16 fade-in">
-                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Langues & Outils</h3>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Français</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Anglais</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Git / GitHub</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">OpenProject</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">n8n</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Excel</span>
-                    <span class="bg-white text-primary px-4 py-2 rounded-full border border-primary hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Metabase</span>
-                </div>
-            </div>
         </div>
     </section>
+
+    <!-- Languages and Tools Section -->
+   <section id="tools" class="py-24 bg-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 slide-up">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Outils & Technologies</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Mes outils et technologies informatiques maîtrisés.</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-code text-orange-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">HTML</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-code text-blue-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">CSS</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">React</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-wind text-teal-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Tailwind CSS</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-bootstrap text-purple-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Bootstrap</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-server text-red-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Nest.js</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-react text-cyan-400 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Next.js</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-js-square text-yellow-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">TypeScript</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-laravel text-red-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Laravel</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-windows text-blue-700 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Systèmes d’exploitation</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-code text-gray-700 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Programmation</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-tools text-gray-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Outils informatiques</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fab fa-github text-black text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Git / GitHub</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-project-diagram text-blue-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">OpenProject</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-cogs text-orange-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">n8n</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-table text-green-600 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Excel</span>
+            </div>
+            <div class="flex flex-col items-center fade-in">
+                <i class="fas fa-chart-bar text-purple-500 text-4xl mb-2"></i>
+                <span class="text-gray-700 font-medium">Metabase</span>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-pattern">
+   <section id="projects" class="py-24 bg-pattern">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 slide-up">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Projets</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Quelques projets marquants qui illustrent mes compétences et ma créativité.</p>
+            <div class="text-center mb-12 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Mes Projets</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez mes réalisations dans les domaines de l'IoT, du développement web et de la conception d'applications.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                        <i class="fas fa-microchip text-white text-5xl"></i>
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="tab-btn active" data-tab="all-projects">Tout</button>
+                <button class="tab-btn" data-tab="iot-projects">IoT</button>
+                <button class="tab-btn" data-tab="web-projects">Web</button>
+                <button class="tab-btn" data-tab="conception-projects">Conception</button>
+            </div>
+            <div id="all-projects" class="tab-content active space-y-6 fade-in">
+                <!-- IoT Projects -->
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Maison Smart</h3>
                     </div>
-                    <div class="p-6">
-                        <span class="text-primary text-sm font-semibold">IoT</span>
-                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">Costumes Intelligents</h3>
-                        <p class="text-gray-600 mb-4">Développement de costumes connectés pour spectacles avec capteurs et LEDs programmables.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Arduino</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">IoT</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">C++</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
-                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
-                        </div>
-                    </div>
+                    <p class="text-gray-600">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
                 </div>
-                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                        <i class="fas fa-globe text-white text-5xl"></i>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Voiture Détecteur d’Obstacle</h3>
                     </div>
-                    <div class="p-6">
-                        <span class="text-primary text-sm font-semibold">Web</span>
-                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">Portfolio Responsive</h3>
-                        <p class="text-gray-600 mb-4">Site portfolio moderne avec design responsive et animations fluides.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">HTML</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Tailwind</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">JavaScript</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
-                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
-                        </div>
-                    </div>
+                    <p class="text-gray-600">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
                 </div>
-                <div class="bg-white rounded-xl card-shadow hover-scale fade-in overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-accent to-primary flex items-center justify-center">
-                        <i class="fas fa-mobile-alt text-white text-5xl"></i>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Poubelle Intelligente</h3>
                     </div>
-                    <div class="p-6">
-                        <span class="text-primary text-sm font-semibold">Mobile</span>
-                        <h3 class="text-xl font-semibold text-dark mt-2 mb-3">App de Gestion</h3>
-                        <p class="text-gray-600 mb-4">Application mobile de gestion de projets avec interface intuitive.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">React Native</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">Node.js</span>
-                            <span class="bg-light text-primary px-2 py-1 rounded text-sm">MongoDB</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <a href="#" class="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-secondary transition-all duration-300 hover-scale">Code</a>
-                            <a href="#" class="flex-1 border border-primary text-primary text-center py-2 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover-scale">Demo</a>
-                        </div>
+                    <p class="text-gray-600">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
+                </div>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Costume Intelligente</h3>
                     </div>
+                    <p class="text-gray-600">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
+                </div>
+                <!-- Web Projects -->
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Gestion de Bibliothèque</h3>
+                    </div>
+                    <p class="text-gray-600">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">SaaS AMINA</h3>
+                    </div>
+                    <p class="text-gray-600">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Boutique en Ligne Quincaillerie</h3>
+                    </div>
+                    <p class="text-gray-600">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Chatbot</h3>
+                    </div>
+                    <p class="text-gray-600">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
+                </div>
+                <!-- Conception Projects -->
+                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Parking App</h3>
+                    </div>
+                    <p class="text-gray-600">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
+                </div>
+                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Vente Plante App</h3>
+                    </div>
+                    <p class="text-gray-600">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
                 </div>
             </div>
-            <div class="text-center mt-12 fade-in">
-                <a href="https://github.com" target="_blank" class="bg-primary text-white px-8 py-3 rounded-xl hover:bg-secondary transition-all duration-300 inline-flex items-center hover-scale">
-                    <i class="fab fa-github mr-2"></i> Voir plus sur GitHub
-                </a>
+            <div id="iot-projects" class="tab-content space-y-6 fade-in">
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Maison Smart</h3>
+                    </div>
+                    <p class="text-gray-600">Développement d'un système de domotique intelligent pour contrôler l'éclairage, la température et la sécurité à distance.</p>
+                </div>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Voiture Détecteur d’Obstacle</h3>
+                    </div>
+                    <p class="text-gray-600">Conception d'une voiture autonome capable de détecter et d'éviter les obstacles grâce à des capteurs IoT.</p>
+                </div>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Poubelle Intelligente</h3>
+                    </div>
+                    <p class="text-gray-600">Création d'une poubelle connectée qui optimise la gestion des déchets via des capteurs et une application mobile.</p>
+                </div>
+                <div class="project project-iot bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-microchip text-primary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Costume Intelligente</h3>
+                    </div>
+                    <p class="text-gray-600">Développement de costumes intégrant des LED programmables et des capteurs pour des spectacles interactifs.</p>
+                </div>
+            </div>
+            <div id="web-projects" class="tab-content space-y-6 fade-in">
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Gestion de Bibliothèque</h3>
+                    </div>
+                    <p class="text-gray-600">Application web pour gérer les emprunts, retours et inventaires de livres dans une bibliothèque.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">SaaS AMINA</h3>
+                    </div>
+                    <p class="text-gray-600">Plateforme SaaS pour la gestion d'entreprise avec des fonctionnalités de facturation et de gestion de clients.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Boutique en Ligne Quincaillerie</h3>
+                    </div>
+                    <p class="text-gray-600">Site e-commerce pour la vente d'outils et de matériel de quincaillerie avec panier et paiement sécurisé.</p>
+                </div>
+                <div class="project project-web bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-secondary">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-globe text-secondary mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Chatbot</h3>
+                    </div>
+                    <p class="text-gray-600">Développement d'un chatbot intelligent pour répondre aux questions des utilisateurs sur un site web.</p>
+                </div>
+            </div>
+            <div id="conception-projects" class="tab-content space-y-6 fade-in">
+                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Parking App</h3>
+                    </div>
+                    <p class="text-gray-600">Application mobile pour localiser et réserver des places de parking en temps réel.</p>
+                </div>
+                <div class="project project-conception bg-white p-4 rounded-xl card-shadow hover-scale border-t-4 border-accent">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-drafting-compass text-accent mr-3 text-lg"></i>
+                        <h3 class="text-lg font-semibold text-dark">Vente Plante App</h3>
+                    </div>
+                    <p class="text-gray-600">Application mobile pour la vente de plantes avec des conseils d'entretien personnalisés.</p>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Personality Section -->
     <section id="personality" class="py-24 bg-pattern">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 slide-up">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Personnalité & Centres d'intérêt</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez ce qui me définit et mes passions quotidiennes.</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Personnalité</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mon profil selon le test MBTI et mes traits de caractère.</p>
             </div>
-            <div class="text-center mb-16 fade-in">
-                <div class="bg-white rounded-xl card-shadow p-8 max-w-md mx-auto hover-scale">
-                    <div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-brain text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-dark mb-2">INTJ-A / INTJ-T</h3>
-                    <p class="text-lg text-primary font-semibold mb-2">L'ARCHITECTE</p>
-                    <p class="text-gray-600">Selon le test MBTI (Myers Briggs Type Indicator)</p>
-                </div>
-            </div>
-            <div class="mb-16 fade-in">
-                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Traits de Personnalité</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-lightbulb text-white text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-dark mb-2">Rationnel</h4>
-                        <p class="text-gray-600 text-sm">Approche analytique et logique</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
-                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-thumbs-up text-white text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-dark mb-2">Confiant</h4>
-                        <p class="text-gray-600 text-sm">Assurance dans mes décisions</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
-                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-palette text-white text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-dark mb-2">Créatif</h4>
-                        <p class="text-gray-600 text-sm">Solutions innovantes</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-accent">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-user-secret text-white text-xl"></i>
-                        </div>
-                        <h4 class="font-semibold text-dark mb-2">Discret</h4>
-                        <p class="text-gray-600 text-sm">Réflexion silencieuse</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale border-t-4 border-primary">
+                        <h3 class="text-xl font-semibold text-dark mb-4">Type MBTI</h3>
+                        <p class="text-gray-600">Architecte INTJ-A / INTJ-T</p>
+                        <p class="text-gray-600 mt-2">Selon les 16 types de personnalité du test MBTI (Myers-Briggs Type Indicator), je suis un penseur stratégique, capable de planifier et d'exécuter des projets avec une vision à long terme.</p>
                     </div>
                 </div>
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Traits de Caractère</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Rationnel</h4>
+                                <p class="text-gray-600">Approche logique et méthodique des problèmes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-thumbs-up text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Confiant</h4>
+                                <p class="text-gray-600">Assurance dans la prise de décision et l'exécution.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-paint-brush text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Créatif</h4>
+                                <p class="text-gray-600">Capacité à innover et trouver des solutions originales.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user-secret text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-dark">Discret</h4>
+                                <p class="text-gray-600">Préférence pour un travail concentré et réfléchi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="fade-in">
-                <h3 class="text-2xl font-semibold text-dark mb-8 text-center">Centres d'Intérêt</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
-                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-book text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests" class="py-24 bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark mb-4">Centres d'Intérêt</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Mes passions qui enrichissent ma créativité et mon équilibre.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="fade-in">
+                    <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-book text-white"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-dark mb-3">Lecture</h4>
-                        <p class="text-gray-600">Développement personnel, science-fiction, technologie</p>
+                        <div>
+                            <h4 class="font-semibold text-dark">Lecture</h4>
+                            <p class="text-gray-600">Exploration de livres sur la technologie, la science et la philosophie.</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
-                        <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-chess text-white text-2xl"></i>
+                </div>
+                <div class="fade-in">
+                    <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-chess text-white"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-dark mb-3">Jeu d'échecs</h4>
-                        <p class="text-gray-600">Stratégie et réflexion analytique</p>
+                        <div>
+                            <h4 class="font-semibold text-dark">Jeu d'échecs</h4>
+                            <p class="text-gray-600">Stratégie et réflexion pour aiguiser l'esprit.</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl card-shadow hover-scale text-center border-r-4 border-secondary">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-lightbulb text-white text-2xl"></i>
+                </div>
+                <div class="fade-in">
+                    <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-paint-brush text-white"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-dark mb-3">Création</h4>
-                        <p class="text-gray-600">Exploration de nouvelles technologies</p>
+                        <div>
+                            <h4 class="font-semibold text-dark">Création</h4>
+                            <p class="text-gray-600">Développement de projets artistiques et technologiques innovants.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -632,7 +899,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-dark">Téléphone</h4>
-                                <a href="tel:+221772330019" class="text-primary hover:underline">(+221) 77 233 00 19</a>
+                                <a href="tel:+221772330019" class="text-primary hover:underline">(+221) 772330019</a>
                             </div>
                         </div>
                         <div class="flex items-center p-4 bg-white rounded-xl card-shadow hover-scale">
@@ -731,7 +998,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100;
-                if (pageYOffset >= sectionTop) {
+                if (window.pageYOffset >= sectionTop) {
                     current = section.getAttribute('id');
                 }
             });
@@ -756,19 +1023,21 @@
         }, observerOptions);
         document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
 
-        // Progress bars animation
+        // Progress bars animation for Skills and Languages & Tools sections
         const progressObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const progressBars = entry.target.querySelectorAll('.progress-bar');
                     progressBars.forEach(bar => {
                         const width = bar.getAttribute('data-width');
-                        setTimeout(() => bar.style.width = width, 300);
+                        if (width) {
+                            setTimeout(() => bar.style.width = width, 300);
+                        }
                     });
                 }
             });
         }, { threshold: 0.5 });
-        document.querySelectorAll('#skills').forEach(section => progressObserver.observe(section));
+        document.querySelectorAll('#skills, #languages-tools').forEach(section => progressObserver.observe(section));
 
         // Contact form handling
         document.getElementById('contact-submit').addEventListener('click', function(e) {
@@ -786,6 +1055,19 @@
                 this.disabled = false;
             }, 2000);
         });
+// Tabs for projects
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                tabContents.forEach(c => c.classList.remove('active'));
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+        // Tabs for projects
+       
     </script>
-    </body>
+</body>
 </html>
